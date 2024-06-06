@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import AlignItemsList from './components/AlignItemsList';
+import React, { useState } from 'react'
 function App() {
+  const [value, setValue] = useState("");
+  function handleChange(e) {
+    setValue(e.target.value);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='search'>
+        <input onChange={handleChange} type="text" name='search' value={value} placeholder='Search Posts Here(search in latin only bz data is in latin language)' />
+      </div>
+      <div className='list-items'>
+        <AlignItemsList searchValue={value} />
+      </div>
     </div>
   );
 }
